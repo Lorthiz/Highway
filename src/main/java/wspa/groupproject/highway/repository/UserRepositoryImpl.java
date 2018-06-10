@@ -1,26 +1,28 @@
 package wspa.groupproject.highway.repository;
 
+import org.hibernate.Session;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import wspa.groupproject.highway.model.User;
 
-import java.util.ArrayList;
-import java.util.HashSet;
+import javax.persistence.EntityManager;
 import java.util.List;
 import java.util.Optional;
 
 @Component
 public class UserRepositoryImpl implements UserRepository {
 
-    private final static HashSet<User> users = new HashSet<>();
-
-    static {
-        users.add(new User(1, "Sylwester", "Wróblewski", "swr@dupadupa.com", "password", null));
-        users.add(new User(2, "Second", "User", "second@dupadupa.com", "password", null));
-    }
+    @Autowired
+    private EntityManager entityManager;
 
     @Override
     public Optional<User> findByEmail(String email) {
         return Optional.empty();
+    }
+
+    @Override
+    public User findById(Long id) {
+        return getSession().get(User.class, id);
     }
 
     @Override
@@ -30,7 +32,7 @@ public class UserRepositoryImpl implements UserRepository {
 
     @Override
     public List<User> findAll() {
-        return new ArrayList<>(users);
+        return getSession().createQuery("from User", User.class).getResultList();
     }
 
     @Override
@@ -51,5 +53,14 @@ public class UserRepositoryImpl implements UserRepository {
     @Override
     public Boolean existsByEmail(String email) {
         return null;
+    }
+
+    @Override
+    public void saveNewUser(User user) {
+        getSession().save(user);
+    }
+
+    private Session getSession() {
+        return entityManager.unwrap(Session.class);
     }
 }

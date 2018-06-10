@@ -10,9 +10,11 @@ import java.util.Optional;
 public interface UserRepository {
     Optional<User> findByEmail(String email);
 
+    User findById(Long id);
+
     Optional<User> findByUsernameOrEmail(String username, String email);
 
-    List<User> findAll();
+    List findAll();
 
     List<User> findByIdIn(List<Long> userIds);
 
@@ -21,4 +23,6 @@ public interface UserRepository {
     Boolean existsByUsername(String username);
 
     Boolean existsByEmail(String email);
+
+    void saveNewUser(User user);
 }
