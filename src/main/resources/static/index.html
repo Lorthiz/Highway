@@ -1,0 +1,44 @@
+<!DOCTYPE HTML>
+<html ng-app="highway">
+<head>
+    <script src="js/libs/angular.js"></script>
+    <script src="js/libs/angular-ui-router.js"></script>
+    <title>Getting Started: Serving Web Content</title>
+</head>
+<body>
+<ul>
+    <li>
+        <a href="#/">Home</a>
+    </li>
+    <li>
+        <a href="#/register">Register</a>
+    </li>
+</ul>
+<div ui-view></div>
+
+<script src="js/highway.js"></script>
+
+<script src="js/services/user.service.js"></script>
+
+<script src="js/home/home.js"></script>
+<script src="js/home/home.component.js"></script>
+
+<script src="js/register/register.js"></script>
+<script src="js/register/register.controller.js"></script>
+<script src="js/register/register.component.js"></script>
+
+
+<a href="/logout">
+    <button>
+        Wyloguj
+    </button>
+</a>
+</body>
+</html>
+
+<!--
+
+https://dzone.com/articles/spring-security-4-authenticate-and-authorize-users
+
+
+-->

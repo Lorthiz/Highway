@@ -1,0 +1,17 @@
+<div>
+        <ul>
+            <li ng-repeat="user in $ctrl.userList">
+                <!--<pre>{{services | json}}</pre>-->
+                <!--name: {{services.name}}-->
+                <!--username: {{services.username}}-->
+                <!--email: {{services.email}}-->
+                <!--password: {{services.password}}-->
+                {{user}}
+            </li>
+        </ul>
+    <input placeholder="Imie i nazwisko" type="text" ng-model="$ctrl.name">
+    <input placeholder="Nazwa uzytkownika" type="text" ng-model="$ctrl.username">
+    <input placeholder="Email" type="text" ng-model="$ctrl.email">
+    <input placeholder="Haslo" type="text" ng-model="$ctrl.password">
+    <input type="submit" ng-click="$ctrl.save();">
+</div>
