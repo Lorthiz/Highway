@@ -1,6 +1,10 @@
 function RegisterController(UserService) {
     var ctrl = this;
     ctrl.userList = [];
+    ctrl.name = "123";
+    ctrl.username = "123";
+    ctrl.email = "123@wp.pl";
+    ctrl.password = "123";
 
     function getUsers() {
         UserService.retrieve().then(
