@@ -6,15 +6,7 @@ function RegisterController(UserService) {
     ctrl.email = "123@wp.pl";
     ctrl.password = "123";
 
-    function getUsers() {
-        UserService.retrieve().then(
-            function (response) {
-                ctrl.userList = response;
-            }
-        )
-    }
-
-    function clearForm(){
+    function clearForm() {
         ctrl.name = "";
         ctrl.username = "";
         ctrl.email = "";
@@ -28,15 +20,12 @@ function RegisterController(UserService) {
             email: ctrl.email,
             password: ctrl.password
         }).then(function (response) {
-                getUsers();
                 clearForm();
             }
         );
     };
-
-    getUsers();
 }
 
 angular
-    .module('highway')
+    .module('register')
     .controller('RegisterController', RegisterController);

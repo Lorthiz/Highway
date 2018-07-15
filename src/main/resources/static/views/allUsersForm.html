@@ -1,0 +1,21 @@
+<div>
+        <ul>
+            <li ng-repeat="user in $ctrl.userList">
+                <!--<pre>{{services | json}}</pre>-->
+                <!--name: {{services.name}}-->
+                <!--username: {{services.username}}-->
+                <!--email: {{services.email}}-->
+                <!--password: {{services.password}}-->
+                {{user}}
+                <button ng-click="$ctrl.promote(user.id, 'ROLE_USER')">
+                    USER
+                </button>
+                <button ng-click="$ctrl.promote(user.id, 'ROLE_INSTRUCTOR')">
+                    INSTRUCTOR
+                </button>
+                <button ng-click="$ctrl.promote(user.id, 'ROLE_ADMIN')">
+                    ADMIN
+                </button>
+            </li>
+        </ul>
+</div>

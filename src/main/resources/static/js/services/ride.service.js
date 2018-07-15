@@ -1,6 +1,6 @@
-function UserService($http) {
+function RideService($http) {
 
-    var API = '/users';
+    var API = '/rides';
 
     function create(todo) {
         return $http.post(API, todo).then(function (response) {
@@ -10,8 +10,7 @@ function UserService($http) {
     }
 
     function retrieve() {
-        return $http.get(API, {headers:{'Cache-Control': 'no-cache'}}).then(function (response) {
-            console.log(response);
+        return $http.get(API, {headers: {'Cache-Control': 'no-cache'}}).then(function (response) {
             return response.data;
         });
     }
@@ -38,4 +37,4 @@ function UserService($http) {
 
 angular
     .module('highway')
-    .service('UserService', UserService);
+    .service('RideService', RideService);

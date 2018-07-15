@@ -16,18 +16,8 @@ public class UserRepositoryImpl implements UserRepository {
     private EntityManager entityManager;
 
     @Override
-    public Optional<User> findByEmail(String email) {
-        return Optional.empty();
-    }
-
-    @Override
     public User findById(Long id) {
         return getSession().get(User.class, id);
-    }
-
-    @Override
-    public Optional<User> findByUsernameOrEmail(String username, String email) {
-        return Optional.empty();
     }
 
     @Override
@@ -36,28 +26,21 @@ public class UserRepositoryImpl implements UserRepository {
     }
 
     @Override
-    public List<User> findByIdIn(List<Long> userIds) {
-        return null;
-    }
-
-    @Override
     public Optional<User> findByUsername(String username) {
-        return Optional.empty();
-    }
-
-    @Override
-    public Boolean existsByUsername(String username) {
-        return null;
-    }
-
-    @Override
-    public Boolean existsByEmail(String email) {
-        return null;
+        String hql = "from User U where U.username = :username";
+        return Optional.of(getSession().createQuery(hql, User.class)
+                .setParameter("username", username)
+                .getSingleResult());
     }
 
     @Override
     public void saveNewUser(User user) {
         getSession().save(user);
+    }
+
+    @Override
+    public void updateUser(User user) {
+        getSession().update(user);
     }
 
     private Session getSession() {

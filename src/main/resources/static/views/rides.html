@@ -1,0 +1,16 @@
+<div>
+    <table ng-if="$ctrl.ridesList !== null && $ctrl.ridesList.length !== 0 ">
+        <tr>
+            <th>Godzina zaczecia</th>
+            <th>Kursant</th>
+            <th>Instruktor</th>
+            <th>Numer rejestracyjny pojazdu</th>
+        </tr>
+        <tr ng-repeat="ride in $ctrl.ridesList">
+            <th>{{ride.startTime}}</th>
+            <th>{{ride.student.name}}</th>
+            <th>{{ ride.instructor.name }}</th>
+            <th>{{ ride.vehicle.registrationNumber }}</th>
+        </tr>
+    </table>
+</div>

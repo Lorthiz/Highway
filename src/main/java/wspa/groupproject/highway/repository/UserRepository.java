@@ -10,21 +10,14 @@ import java.util.Optional;
 @Repository
 @Transactional
 public interface UserRepository {
-    Optional<User> findByEmail(String email);
 
     User findById(Long id);
 
-    Optional<User> findByUsernameOrEmail(String username, String email);
-
     List<User> findAll();
-
-    List<User> findByIdIn(List<Long> userIds);
 
     Optional<User> findByUsername(String username);
 
-    Boolean existsByUsername(String username);
-
-    Boolean existsByEmail(String email);
-
     void saveNewUser(User user);
+
+    void updateUser(User user);
 }

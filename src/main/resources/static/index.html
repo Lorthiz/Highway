@@ -3,7 +3,7 @@
 <head>
     <script src="js/libs/angular.js"></script>
     <script src="js/libs/angular-ui-router.js"></script>
-    <title>Getting Started: Serving Web Content</title>
+    <title>Highway</title>
 </head>
 <body>
 <ul>
@@ -11,7 +11,10 @@
         <a href="#/">Home</a>
     </li>
     <li>
-        <a href="#/register">Register</a>
+        <a href="#/allUsers">Users</a>
+    </li>
+    <li>
+        <a href="#/rides">Rides</a>
     </li>
 </ul>
 <div ui-view></div>
@@ -19,14 +22,35 @@
 <script src="js/highway.js"></script>
 
 <script src="js/services/user.service.js"></script>
+<script src="js/services/ride.service.js"></script>
 
 <script src="js/home/home.js"></script>
 <script src="js/home/home.component.js"></script>
+
+<script src="js/rides/rides.js"></script>
+<script src="js/rides/rides.controller.js"></script>
+<script src="js/rides/rides.component.js"></script>
 
 <script src="js/register/register.js"></script>
 <script src="js/register/register.controller.js"></script>
 <script src="js/register/register.component.js"></script>
 
+<script src="js/allUsers/allUsers.js"></script>
+<script src="js/allUsers/allUsers.controller.js"></script>
+<script src="js/allUsers/allUsers.component.js"></script>
+
+
+<a href="/login">
+    <button>
+        Zaloguj
+    </button>
+</a>
+
+<a href="#/register">
+    <button>
+        Zarejestruj
+    </button>
+</a>
 
 <a href="/logout">
     <button>
@@ -35,10 +59,3 @@
 </a>
 </body>
 </html>
-
-<!--
-
-https://dzone.com/articles/spring-security-4-authenticate-and-authorize-users
-
-
--->

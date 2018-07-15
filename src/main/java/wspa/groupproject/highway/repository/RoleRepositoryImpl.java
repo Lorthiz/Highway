@@ -16,7 +16,8 @@ public class RoleRepositoryImpl implements RoleRepository {
 
     @Override
     public Role findByName(RoleName roleName) {
-        return getSession().get(Role.class, 1L);
+        String hql = "FROM Role R WHERE R.name = :roleName";
+        return getSession().createQuery(hql, Role.class).setParameter("roleName", roleName).getSingleResult();
     }
 
     private Session getSession() {

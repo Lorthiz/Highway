@@ -1,5 +1,5 @@
 var home = {
-    template: "<p>THIS IS HOME</p>"
+    template: "Start:<input type=\"datetime-local\"/>"
 };
 
 angular
