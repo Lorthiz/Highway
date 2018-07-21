@@ -32,15 +32,9 @@ public class VehicleController {
     }
 
     @PostMapping(PATH)
+    @Secured("ROLE_ADMIN")
     @ResponseStatus(value = HttpStatus.CREATED)
     public void usersPOST(@RequestBody Vehicle vehicle) {
         vehicleRepository.save(vehicle);
     }
-//
-//    @GetMapping(PATH + "/{id}")
-//    @Secured("ROLE_ADMIN")
-//    @ResponseStatus(value = HttpStatus.ACCEPTED)
-//    public User getSingleVehicle(@PathVariable Long id) {
-//        return userRepository.findById(id);
-//    }
 }

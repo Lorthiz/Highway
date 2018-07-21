@@ -91,6 +91,6 @@ public class UserController {
     private boolean isUser(User user) {
         return user.getRoles().stream()
                 .map(Role::getName)
-                .anyMatch(RoleName.ROLE_INSTRUCTOR::equals);
+                .anyMatch(RoleName.ROLE_USER::equals);
     }
 }
