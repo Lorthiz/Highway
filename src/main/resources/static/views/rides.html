@@ -1,16 +1,31 @@
 <div>
+    <input type="datetime-local"
+           ng-model="$ctrl.ride.startTime"
+           pattern="[0-9]{4}-[0-9]{2}-[0-9]{2}T[0-9]{2}:[0-9]{2}">
+    <select ng-model="$ctrl.ride.instructorId">
+        <option ng-repeat="option in $ctrl.conf.instructors" value="{{option.id}}">{{option.name}}</option>
+    </select>
+    <select ng-model="$ctrl.ride.vehicleId">
+        <option ng-repeat="option in $ctrl.conf.vehicles" value="{{option.id}}">{{option.registrationNumber}}</option>
+    </select>
+    <input type="submit" ng-click="$ctrl.submit();">
+
     <table ng-if="$ctrl.ridesList !== null && $ctrl.ridesList.length !== 0 ">
         <tr>
             <th>Godzina zaczecia</th>
             <th>Kursant</th>
             <th>Instruktor</th>
             <th>Numer rejestracyjny pojazdu</th>
+            <th>Odwolaj</th>
         </tr>
         <tr ng-repeat="ride in $ctrl.ridesList">
             <th>{{ride.startTime}}</th>
             <th>{{ride.student.name}}</th>
             <th>{{ ride.instructor.name }}</th>
             <th>{{ ride.vehicle.registrationNumber }}</th>
+            <th>
+                <button aria-label="Close Account Info Modal Box" ng-click="$ctrl.cancel($index)">&times;</button>
+            </th>
         </tr>
     </table>
 </div>

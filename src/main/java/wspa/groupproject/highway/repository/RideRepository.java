@@ -16,6 +16,8 @@ public interface RideRepository {
 
     List<Ride> findByInstructorId(Long id);
 
+    List<Ride> findByUserId(Long id);
+
     List<Ride> findForInterval(Long start, Long end);
 
     List<Ride> findAll();
@@ -24,4 +26,5 @@ public interface RideRepository {
 
     void saveOrUpdate(Ride ride);
 
+    void deleteById(Long id);
 }

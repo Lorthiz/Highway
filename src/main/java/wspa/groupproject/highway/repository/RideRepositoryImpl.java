@@ -36,6 +36,14 @@ public class RideRepositoryImpl implements RideRepository {
     }
 
     @Override
+    public List<Ride> findByUserId(Long userId) {
+        String hql = "from Ride R where R.instructor.id = :userId or R.student.id = :userId";
+        return getSession().createQuery(hql, Ride.class)
+                .setParameter("userId", userId)
+                .getResultList();
+    }
+
+    @Override
     public List<Ride> findForInterval(Long start, Long end) {
         return null;
     }
@@ -53,6 +61,12 @@ public class RideRepositoryImpl implements RideRepository {
     @Override
     public void saveOrUpdate(Ride ride) {
         getSession().saveOrUpdate(ride);
+    }
+
+    @Override
+    public void deleteById(Long id) {
+        Ride toRemove = findById(id);
+        getSession().delete(toRemove);
     }
 
     private Session getSession() {

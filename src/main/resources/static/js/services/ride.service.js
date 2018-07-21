@@ -15,6 +15,12 @@ function RideService($http) {
         });
     }
 
+    function retrieveConf() {
+        return $http.get(API + "/conf", {headers: {'Cache-Control': 'no-cache'}}).then(function (response) {
+            return response.data;
+        });
+    }
+
     function update(todo) {
         return $http.put(API + todo.id).then(function (response) {
             return response.data;
@@ -22,7 +28,7 @@ function RideService($http) {
     }
 
     function remove(todo) {
-        return $http.delete(API + todo.id).then(function (response) {
+        return $http.delete(API + "/" +  todo.id).then(function (response) {
             return response.data;
         });
     }
@@ -30,6 +36,7 @@ function RideService($http) {
     return {
         create: create,
         retrieve: retrieve,
+        retrieveConf: retrieveConf,
         update: update,
         remove: remove
     };
