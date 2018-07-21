@@ -1,0 +1,10 @@
+<div>
+    <div ng-if="$ctrl.currentUser !== null">
+        Name: {{$ctrl.currentUser.name}}<br>
+        Email: {{$ctrl.currentUser.email}}<br>
+        <br>
+        Zmień hasło:
+        <input type="text" placeholder="Nowe hasło..." ng-model="$ctrl.newPassword">
+        <input type="submit" ng-click="$ctrl.save();">
+    </div>
+</div>
