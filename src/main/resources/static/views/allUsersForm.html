@@ -1,16 +1,27 @@
 <div>
-    <ul>
-        <li ng-repeat="user in $ctrl.userList">
-            {{user}}
-            <button ng-click="$ctrl.promote(user.id, 'ROLE_USER')">
-                USER
-            </button>
-            <button ng-click="$ctrl.promote(user.id, 'ROLE_INSTRUCTOR')">
-                INSTRUCTOR
-            </button>
-            <button ng-click="$ctrl.promote(user.id, 'ROLE_ADMIN')">
-                ADMIN
-            </button>
-        </li>
-    </ul>
+    <table ng-if="$ctrl.userList !== null && $ctrl.userList.length !== 0 ">
+        <tr>
+            <th>Username</th>
+            <th>Imie i nazwisko</th>
+            <th>Email</th>
+            <th>Uprawnienia</th>
+        </tr>
+        <tr ng-repeat="user in $ctrl.userList">
+            <th>{{user.username}}</th>
+            <th>{{user.name}}</th>
+            <th>{{ user.email }}</th>
+            <th>{{ user.roles[0].name }}</th>
+            <th>
+                <button ng-click="$ctrl.promote(user.id, 'ROLE_USER')">
+                    USER
+                </button>
+                <button ng-click="$ctrl.promote(user.id, 'ROLE_INSTRUCTOR')">
+                    INSTRUCTOR
+                </button>
+                <button ng-click="$ctrl.promote(user.id, 'ROLE_ADMIN')">
+                    ADMIN
+                </button>
+            </th>
+        </tr>
+    </table>
 </div>
