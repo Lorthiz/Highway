@@ -14,6 +14,9 @@ public interface VehicleRepository {
 
     Vehicle findById(Long id);
 
+    void changeStatus(Long id);
+
     List<Vehicle> findAll();
 
+    void save(Vehicle vehicle);
 }

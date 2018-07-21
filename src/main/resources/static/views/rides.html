@@ -1,14 +1,19 @@
 <div>
-    <input type="datetime-local"
-           ng-model="$ctrl.ride.startTime"
-           pattern="[0-9]{4}-[0-9]{2}-[0-9]{2}T[0-9]{2}:[0-9]{2}">
-    <select ng-model="$ctrl.ride.instructorId">
-        <option ng-repeat="option in $ctrl.conf.instructors" value="{{option.id}}">{{option.name}}</option>
-    </select>
-    <select ng-model="$ctrl.ride.vehicleId">
-        <option ng-repeat="option in $ctrl.conf.vehicles" value="{{option.id}}">{{option.registrationNumber}}</option>
-    </select>
-    <input type="submit" ng-click="$ctrl.submit();">
+    <div ng-if="$ctrl.conf.instructors.length !== 0 && $ctrl.conf.vehicles.length !== 0">
+        <input type="datetime-local"
+               ng-model="$ctrl.ride.startTime">
+        <select ng-model="$ctrl.ride.instructorId">
+            <option ng-repeat="option in $ctrl.conf.instructors" value="{{option.id}}">{{option.name}}</option>
+        </select>
+        <select ng-model="$ctrl.ride.vehicleId">
+            <option ng-repeat="option in $ctrl.conf.vehicles" value="{{option.id}}">{{option.registrationNumber}}
+            </option>
+        </select>
+        <input type="submit" ng-click="$ctrl.submit();">
+    </div>
+    <div ng-if="$ctrl.conf.instructors.length === 0">Brak dostępnych instruktorów!</div>
+    <div ng-if="$ctrl.conf.vehicles.length === 0">Brak dostępnych pojazdów!</div>
+
 
     <table ng-if="$ctrl.ridesList !== null && $ctrl.ridesList.length !== 0 ">
         <tr>

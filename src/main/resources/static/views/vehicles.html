@@ -1,0 +1,26 @@
+<div>
+    <input placeholder="Numer rejestracyjny" type="text" ng-model="$ctrl.registrationNumber">
+    <input placeholder="Model" type="text" ng-model="$ctrl.model">
+    <input placeholder="Rok produkcji" type="number" ng-model="$ctrl.productionDate">
+    <input type="submit" ng-click="$ctrl.addVehicle();">
+
+    <table ng-if="$ctrl.vehiclesList !== null && $ctrl.vehiclesList !== 0 ">
+        <tr>
+            <th>Numer rejestracyjny</th>
+            <th>Model</th>
+            <th>Rok produkcji</th>
+            <th>Status</th>
+        </tr>
+        <tr ng-repeat="vehicle in $ctrl.vehiclesList">
+            <th>{{vehicle.registrationNumber}}</th>
+            <th>{{vehicle.model}}</th>
+            <th>{{ vehicle.productionDate }}</th>
+            <th>
+                <button aria-label="Close Account Info Modal Box" ng-click="$ctrl.changeStatus($index)">
+                    <div ng-if="vehicle.status">&check;</div>
+                    <div ng-if="!vehicle.status">&#x2717;</div>
+                </button>
+            </th>
+        </tr>
+    </table>
+</div>

@@ -53,7 +53,9 @@ public class RideController {
                 .filter(this::isInstructor)
                 .filter(this::isNotSelf)
                 .collect(Collectors.toList());
-        List<Vehicle> vehicles = vehicleRepository.findAll();
+        List<Vehicle> vehicles = vehicleRepository.findAll().stream()
+                .filter(Vehicle::isStatus)
+                .collect(Collectors.toList());
         return new RideConfiguration(instructors, vehicles);
     }
 

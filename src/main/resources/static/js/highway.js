@@ -1,2 +1,2 @@
 angular
-    .module('highway', ['home', 'register', 'allUsers', 'rides']);
+    .module('highway', ['home', 'register', 'allUsers', 'rides', 'vehicles']);

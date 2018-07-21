@@ -3,9 +3,11 @@ package wspa.groupproject.highway.model;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.hibernate.annotations.NaturalId;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
 @Entity
@@ -23,13 +25,14 @@ public class Vehicle {
 
     @NotBlank
     @Size(max = 10)
+    @NaturalId
     private String registrationNumber;
 
     @NotBlank
     @Size(max = 40)
     private String model;
 
-    @NotBlank
+    @NotNull
     private int productionDate;
 
 }

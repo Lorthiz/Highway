@@ -56,7 +56,6 @@ function RidesController(RideService) {
 
     getConf();
     getRides();
-    console.log(ctrl.conf);
 }
 
 angular

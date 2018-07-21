@@ -20,8 +20,20 @@ public class VehicleRepositoryImpl implements VehicleRepository {
     }
 
     @Override
+    public void changeStatus(Long id) {
+        Vehicle vehicle = findById(id);
+        vehicle.setStatus(!vehicle.isStatus());
+        getSession().update(vehicle);
+    }
+
+    @Override
     public List<Vehicle> findAll() {
         return getSession().createQuery("from Vehicle", Vehicle.class).getResultList();
+    }
+
+    @Override
+    public void save(Vehicle vehicle) {
+        getSession().save(vehicle);
     }
 
     private Session getSession() {
