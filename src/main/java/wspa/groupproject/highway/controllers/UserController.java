@@ -3,6 +3,8 @@ package wspa.groupproject.highway.controllers;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.security.access.annotation.Secured;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.web.bind.annotation.*;
 import wspa.groupproject.highway.model.RoleName;
 import wspa.groupproject.highway.model.User;
@@ -41,5 +43,23 @@ public class UserController {
     @ResponseStatus(value = HttpStatus.ACCEPTED)
     public User getSingleUser(@PathVariable Long id) {
         return userRepository.findById(id);
+    }
+
+    @GetMapping(PATH + "/currentUser")
+    @Secured({"ROLE_ADMIN", "ROLE_INSTRUCTOR", "ROLE_USER"})
+    @ResponseStatus(value = HttpStatus.ACCEPTED)
+    public User getCurrentUser() {
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        return userRepository.findByUsername(authentication.getName()).orElse(null);
+    }
+
+    @PutMapping(PATH)
+    @Secured({"ROLE_ADMIN", "ROLE_INSTRUCTOR", "ROLE_USER"})
+    @ResponseStatus(value = HttpStatus.ACCEPTED)
+    public void updateUser(@RequestBody User user) {
+        User updated = getCurrentUser();
+        updated.setPassword(user.getPassword());
+        updated.setEmail(user.getEmail());
+        userRepository.updateUser(updated);
     }
 }

@@ -11,7 +11,6 @@ function VehiclesService($http) {
 
     function retrieve() {
         return $http.get(API, {headers:{'Cache-Control': 'no-cache'}}).then(function (response) {
-            console.log(response);
             return response.data;
         });
     }

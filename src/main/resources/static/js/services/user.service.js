@@ -11,13 +11,18 @@ function UserService($http) {
 
     function retrieve() {
         return $http.get(API, {headers:{'Cache-Control': 'no-cache'}}).then(function (response) {
-            console.log(response);
+            return response.data;
+        });
+    }
+
+    function retrieveCurrentUser() {
+        return $http.get(API + "/currentUser", {headers:{'Cache-Control': 'no-cache'}}).then(function (response) {
             return response.data;
         });
     }
 
     function update(todo) {
-        return $http.put(API + todo.id).then(function (response) {
+        return $http.put(API, todo).then(function (response) {
             return response.data;
         });
     }
@@ -31,6 +36,7 @@ function UserService($http) {
     return {
         create: create,
         retrieve: retrieve,
+        retrieveCurrentUser: retrieveCurrentUser,
         update: update,
         remove: remove
     };

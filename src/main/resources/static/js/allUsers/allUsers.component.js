@@ -1,4 +1,4 @@
-var register = {
+var allUsers = {
     templateUrl: 'views/allUsersForm.html',
     restrict: 'E',
     controller: 'AllUsersController as $ctrl'
@@ -6,7 +6,7 @@ var register = {
 
 angular
     .module('allUsers')
-    .component('allUsers', register)
+    .component('allUsers', allUsers)
     .config(function ($stateProvider) {
         $stateProvider
             .state('allUsers', {
